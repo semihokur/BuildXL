@@ -2797,7 +2797,11 @@ namespace BuildXL.Processes
                     // (and for NtQueryDirectoryFile, we can't always report the individual probes anyway).
                     if (reported.RequestedAccess == RequestedAccess.EnumerationProbe)
                     {
-                        continue;
+                        // If it is an incremental tool and the pip allows preserving outputs, do not ignore. 
+                        if (!m_shouldPreserveOutputs || !reported.Process.Path.Contains("java.exe"))
+                        {
+                            continue;
+                        }
                     }
 
                     AbsolutePath parsedPath;

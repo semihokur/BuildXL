@@ -227,10 +227,10 @@ namespace BuildXL.Scheduler.Tracing
                 return false;
             }
 
-            if (m_changedPips.WasVisited(pipId.ToNodeId()))
-            {
-                return false;
-            }
+            //if (m_changedPips.WasVisited(pipId.ToNodeId()))
+            //{
+            //    return false;
+            //}
 
             return true;
         }
